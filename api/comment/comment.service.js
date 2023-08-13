@@ -54,25 +54,9 @@ async function add(comment) {
     }
 }
 
-// async function update(comment) {
-//     try {
-//         const commentToSave = {
-//             vendor: comment.vendor,
-//             price: comment.price
-//         }
-//         const collection = await dbService.getCollection('comment')
-//         await collection.updateOne({ _id: ObjectId(comment._id) }, { $set: commentToSave })
-//         return comment
-//     } catch (err) {
-//         logger.error(`cannot update comment ${commentId}`, err)
-//         throw err
-//     }
-// }
-
 export const commentService = {
     remove,
     query,
     getById,
     add,
-    // update,
 }
