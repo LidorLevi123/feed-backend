@@ -8,12 +8,12 @@ const { ObjectId } = mongodb
 async function query(filterBy = { email: '' }) {
     try {
         const criteria = {
-            email: { $regex: filterBy.email, $options: 'i' }
+            'by.email': { $regex: filterBy.email, $options: 'i' }
         }
         const collection = await dbService.getCollection('comment')
         var commentCursor = await collection.find(criteria)
 
-        const comments = commentCursor.toArray()
+        const comments = await commentCursor.toArray()
         return comments
     } catch (err) {
         logger.error('cannot find comments', err)
@@ -74,5 +74,5 @@ export const commentService = {
     query,
     getById,
     add,
-    update,
+    // update,
 }
